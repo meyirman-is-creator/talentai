@@ -1,0 +1,48 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.backLink {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #3a57e8;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.dropArea {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 1rem;
+  background-color: #f8faff;
+  cursor: pointer;
+}
+
+.instructions {
+  margin-bottom: 0.5rem;
+}
+
+.orText {
+  margin-bottom: 0.5rem;
+}
+
+.supportText {
+  display: block;
+  margin-top: 0.75rem;
+  color: #777;
+}
+
+.fileName {
+  margin-top: 1rem;
+  color: #333;
+}

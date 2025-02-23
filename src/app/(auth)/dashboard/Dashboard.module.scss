@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Блок со статистикой */
+.statsSection {
+  display: flex;
+  gap: 1rem;
+}
+
+.statCard {
+  flex: 1;
+  padding: 1rem;
+}
+
+.cardTitle {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.cardNumber {
+  font-weight: 700;
+}
+
+.cardPercent {
+  color: #28a745; /* зеленый для процента */
+}
+
+/* Кнопки (Post Job, Upload CVs) */
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Недавние вакансии и приложения */
+.listsSection {
+  display: flex;
+  gap: 1rem;
+}
+
+.listCard {
+  flex: 1;
+  padding: 1rem;
+}
+
+.listTitle {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.listItem {
+  margin-top: 1rem;
+  background-color: #f8faff;
+  padding: 0.75rem;
+  border-radius: 4px;
+}
