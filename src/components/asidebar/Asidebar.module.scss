@@ -1,16 +1,16 @@
 .aside {
-  width: 220px;
-  background-color: #fff;
-  border-right: 1px solid #e0e0e0;
-  min-height: calc(100vh - 64px);
+  width: 220px !important;
+  background-color: #fff !important;
+  border-right: 1px solid #e0e0e0 !important;
+  min-height: calc(100vh - 64px) !important;
 }
 
 .activeLink {
-  background-color: #3a57e8;
-  color: #fff;
+  background-color: #3a57e8 !important;
+  color: #fff !important;
 
   .MuiListItemIcon-root,
   .MuiListItemText-root {
-    color: #fff;
+    color: #fff !important;
   }
 }
