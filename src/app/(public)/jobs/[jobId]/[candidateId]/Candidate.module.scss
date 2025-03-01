@@ -1,0 +1,66 @@
+.container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.topActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.backLink {
+  text-decoration: none;
+  color: #0070f3;
+  font-weight: 500;
+}
+
+.resumeBtn {
+  text-transform: none;
+}
+
+.candidateHeader {
+  box-shadow: none !important;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.candidateName {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.infoSection {
+  box-shadow: none !important;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.infoBox {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fafafa;
+}
+
+.largeBox {
+  min-height: 120px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fafafa;
+  padding: 0.5rem;
+}
+
+.approveSection {
+  text-align: right;
+}
+
+.approveBtn {
+  text-transform: none;
+  background-color: #28a745 !important;
+  color: #fff !important;
+  border: none !important;
+}

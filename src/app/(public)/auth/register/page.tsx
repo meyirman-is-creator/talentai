@@ -4,16 +4,49 @@ import React, { useState } from "react";
 import styles from "./Register.module.scss";
 import { Box, TextField, Button, Typography, Link, Paper } from "@mui/material";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import { useRouter } from "next/navigation";
+import { registerUser } from "@/services/authService"; 
 
 export default function RegisterPage() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Логика регистрации
+    setErrorMessage(null);
+
+    if (password !== confirmPassword) {
+      setErrorMessage("Passwords do not match.");
+      return;
+    }
+
+    try {
+      const response = await registerUser({
+        username: fullName,
+        email: email,
+        password: password,
+        password2: confirmPassword,
+      });
+
+      if (response.status === 201) {
+        router.push("/auth/login");
+      } else if (response.status === 302) {
+        window.location.href = response.data.redirect;
+      } else {
+        setErrorMessage("Registration failed. Please try again.");
+      }
+    } catch (error: any) {
+      if (error.response?.status === 400) {
+        setErrorMessage(error.response.data?.errors?.description || "Validation error.");
+      } else {
+        setErrorMessage(error.response?.data || error.message);
+      }
+    }
   };
 
   return (
@@ -22,15 +55,17 @@ export default function RegisterPage() {
         <Box textAlign="center" mb={2}>
           <PersonAddIcon fontSize="large" className={styles.logo} />
         </Box>
-        <Typography
-          variant="h5"
-          fontWeight="bold"
-          textAlign="center"
-          gutterBottom
-        >
+        <Typography variant="h5" fontWeight="bold" textAlign="center" gutterBottom>
           Create an Account
         </Typography>
+
         <Box component="form" onSubmit={handleSubmit} className={styles.form}>
+          {errorMessage && (
+            <Typography color="error" textAlign="center" mb={2}>
+              {errorMessage}
+            </Typography>
+          )}
+
           <TextField
             label="Full Name"
             variant="outlined"
@@ -66,15 +101,11 @@ export default function RegisterPage() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            size="large"
-            fullWidth
-          >
+
+          <Button type="submit" variant="contained" color="primary" size="large" fullWidth>
             Create an Account
           </Button>
+
           <Typography variant="body2" textAlign="center" mt={2}>
             Already have an Account?{" "}
             <Link href="/auth/login" underline="hover">
